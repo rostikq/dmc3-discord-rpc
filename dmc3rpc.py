@@ -138,11 +138,19 @@ def _style():
         style_info = style_2_list[0]
         style_info_details = style_2_info_list[0]
 
+def _cmdoutput():
+    print("\033[H\033[J", end="") #Clean the output console
+    print("Mission State:" + mission_info)
+    print("Difficulty:" + difficulty_info)
+    print("Character:" + str(character_current))
+    print("Battle condition:" + str(battle_current))
+    print("Style:" + str(style_current))
+    print("Stylish Rank:" + str(stylish_rank_current))
+
 if __name__ == "__main__":
     while True: 
         if process == 0: exit()
         time.sleep(cooldown)
-        print(rpcTime)
 
         _mission()
         _difficulty()
@@ -151,8 +159,8 @@ if __name__ == "__main__":
         _style()
 
         _character()
-
         _image()
+        _cmdoutput()
 
         if battle_current == 1:
             RPC.update(details=style_info, state=style_info_details, large_image=image_current, start=rpcTime)
